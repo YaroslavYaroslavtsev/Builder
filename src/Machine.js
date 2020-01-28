@@ -333,7 +333,7 @@ class Machine {
 
     // check if file is included from github or Bitbucket server source - if so, modify the path and return it relative to the repo root
     const remotePath = this._formatURL(context.__PATH__, includePath);
-    if (remotePath && this._getReader(remotePath) === this.readers.github || this._getReader(remotePath) === this.readers.bitbucketSrv) {
+    if (remotePath && (this._getReader(remotePath) === this.readers.github || this._getReader(remotePath) === this.readers.bitbucketSrv)) {
       return context.__REPO_REF__ ? `${remotePath}@${context.__REPO_REF__}` : remotePath;
     }
 
