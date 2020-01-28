@@ -560,7 +560,7 @@ This directive can be used to include local files, external sources or [macros](
 
         <pre><b>@include</b> "bitbucket-server:~john/Promise/promise.class.nut@v3.0.1"</pre>
     <a id='include-bitbucket-note1'></a>
-    **Note 1**: This section describes [**Bitbucket Server**](https://www.atlassian.com/software/bitbucket/download) includes. You can't use this to include files from [Bitbucket.org](https://bitbucket.org/).
+    **Note 1**: This section describes [**Bitbucket Server**](https://www.atlassian.com/software/bitbucket/download) (version **5.3.0** or above supported) includes. You can't use this to include files from [Bitbucket.org](https://bitbucket.org/).
 
     **Note 2**: Currently, only one server can be specified/used to fetch all Bitbucket Server includes.
 
