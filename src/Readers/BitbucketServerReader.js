@@ -65,7 +65,7 @@ class BitbucketServerReader extends AbstractReader {
     this.logger.debug(`Reading Bitbucket-server source "${source}"...`);
 
     if (!this.serverAddr) {
-      throw 'Bitbucket server address is not specified';
+      throw new AbstractReader.Errors.SourceReadingError('Bitbucket Server address is not specified');
     }
 
     var commitID = null;
