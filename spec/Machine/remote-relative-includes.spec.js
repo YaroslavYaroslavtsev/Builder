@@ -37,8 +37,9 @@ describe('Machine', () => {
 
   it('check that include once directive makes distinguish between local and github files', () => {
     machine.remoteRelativeIncludes = true;
+    const context = {__ABSOLUTE_PATH__: ''};
     const res = eol.lf(machine.execute(`@include once "${backslashToSlash(__dirname)}/../fixtures/sample-1/inc-a.nut"
-@include once "${githubPathB}"`));
+@include once "${githubPathB}"`, context));
     expect(res).toEqual('// included file a\n// included file b\n// inc-b.nut:1 # inc-b.nut:1\n');
   });
 });

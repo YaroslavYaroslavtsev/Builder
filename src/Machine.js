@@ -98,7 +98,7 @@ class Machine {
 
     // execute
     context = merge(
-      {__FILE__: this.file, __PATH__: this.path},
+      {__FILE__: this.file, __PATH__: this.path, __ABSOLUTE_PATH__: path.resolve('.')},
       this._builtinFunctions,
       this.globals,
       context
@@ -419,6 +419,11 @@ class Machine {
       context,
       res.includePathParsed
     );
+    if (path.isAbsolute(context.__PATH__)) {
+      context.__ABSOLUTE_PATH__ = context.__PATH__;
+    } else {
+      context.__ABSOLUTE_PATH__ = path.join(context.__ABSOLUTE_PATH__, context.__PATH__);
+    }
 
     // store included source
     this._includedSources.add(includePath);

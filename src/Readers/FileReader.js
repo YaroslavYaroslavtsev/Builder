@@ -53,7 +53,7 @@ class FileReader extends AbstractReader {
   read(filePath, options) {
 
     var searchDirs = this.searchDirs.concat (
-      options.context.__PATH__,
+      options.context.__ABSOLUTE_PATH__,
       '' /* to try as absolute path */
     )
 
