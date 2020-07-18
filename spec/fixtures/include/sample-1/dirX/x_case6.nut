@@ -1,0 +1,1 @@
+@include "github:YaroslavYaroslavtsev/Builder/spec/fixtures/include/sample-1/dirD/y6.nut@feature/ADO-310-includes-enhancement"
