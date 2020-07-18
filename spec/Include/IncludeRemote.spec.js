@@ -16,6 +16,8 @@ fdescribe('Remote relative option is enabled', () => {
     builder = new Builder();
     builder.machine.remoteRelativeIncludes = true;
     builder.machine.path = contextPath;
+    builder.machine.useCache = false;
+    builder.machine.clearCache = true;
     builder.logger = new Log(process.env.SPEC_LOGLEVEL || 'error');
   });
 
@@ -50,6 +52,8 @@ fdescribe('Remote relative option is not enabled', () => {
     builder = new Builder();
     builder.machine.remoteRelativeIncludes = false;
     builder.machine.path = contextPath;
+    builder.machine.useCache = false;
+    builder.machine.clearCache = true;
     builder.logger = new Log(process.env.SPEC_LOGLEVEL || 'error');
   });
 
