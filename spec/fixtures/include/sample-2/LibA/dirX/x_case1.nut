@@ -1,1 +1,1 @@
-@include "github:electricimp/Builder/spec/fixtures/include/sample-2/libB/dirB/y1.nut"
+@include "github:YaroslavYaroslavtsev/Builder/spec/fixtures/include/sample-2/libB/dirB/y1.nut@feature/ADO-310-includes-enhancement"

@@ -5,8 +5,9 @@
 'use strict';
 
 const Builder = require('../../src');
+const path = require('path');
 
-describe('Remote relative option is enabled', () => {
+fdescribe('Remote relative option is enabled', () => {
 
   let builder;
   const contextPath = path.resolve(__dirname + "/../fixtures/include/sample-2/").replace(/\\/g, '/');
@@ -40,7 +41,7 @@ describe('Remote relative option is enabled', () => {
 
 });
 
-describe('Remote relative option is not enabled', () => {
+fdescribe('Remote relative option is not enabled', () => {
 
   let builder;
   const contextPath = path.resolve(__dirname + "/../fixtures/include/sample-2/").replace(/\\/g, '/');

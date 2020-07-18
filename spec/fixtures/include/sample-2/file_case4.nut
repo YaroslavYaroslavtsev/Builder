@@ -1,1 +1,1 @@
-@include "https://raw.githubusercontent.com/YaroslavYaroslavtsev/Builder/ADO-310-includes-enhancement/spec/fixtures/include/sample-2/libA/dirX/x_case4.nut"
+@include "https://raw.githubusercontent.com/YaroslavYaroslavtsev/Builder/feature/ADO-310-includes-enhancement/spec/fixtures/include/sample-2/LibA/dirX/x_case4.nut"
