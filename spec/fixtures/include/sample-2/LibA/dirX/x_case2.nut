@@ -1,1 +1,1 @@
-@include "spec/fixtures/include/sample-2/LibC/dirC/y2.nut"
+@include "LibC/dirC/y2.nut"
