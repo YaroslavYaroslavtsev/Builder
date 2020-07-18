@@ -1,1 +1,1 @@
-@include "github:electricimp/Builder/spec/fixtures/include/sample-2/libA/dirX/x_case1.nut"
+@include "github:YaroslavYaroslavtsev/Builder/spec/fixtures/include/sample-2/libA/dirX/x_case1.nut@ADO-310-includes-enhancement"
