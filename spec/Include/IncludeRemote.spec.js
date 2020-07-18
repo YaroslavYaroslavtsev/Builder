@@ -5,6 +5,8 @@
 'use strict';
 
 const Builder = require('../../src');
+const backslashToSlash = require('../backslashToSlash');
+const Log = require('log');
 const path = require('path');
 
 fdescribe('Remote relative option is enabled', () => {
