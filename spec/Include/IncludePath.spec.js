@@ -10,7 +10,7 @@ const Log = require('log');
 const path = require('path');
 const fs = require('fs');
 
-describe('__PATH__ variable', () => {
+fdescribe('__PATH__ variable', () => {
 
   let builder;
   const contextPath = path.resolve(__dirname + "/../fixtures/lib/").replace(/\\/g, '/');
@@ -30,7 +30,7 @@ describe('__PATH__ variable', () => {
     let output = builder.machine.execute(`@include "git-local:${process.env.SPEC_GIT_LOCAL_REPO_PATH}/spec/fixtures/lib/path.builder@feature/ADO-310-includes-enhancement"`);
     expect(output).toContain("git-local:" + process.env.SPEC_GIT_LOCAL_REPO_PATH + "/spec/fixtures/lib#path.builder@1");
   });
-  
+
   it('__PATH__ should be a remote repository path', () => {
     let output = builder.machine.execute(`@include "github:YaroslavYaroslavtsev/Builder/spec/fixtures/lib/path.builder@feature/ADO-310-includes-enhancement"`);
     expect(output).toContain('github:YaroslavYaroslavtsev/Builder/spec/fixtures/lib#path.builder@1\n');

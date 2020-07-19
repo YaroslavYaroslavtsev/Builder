@@ -77,12 +77,12 @@ fdescribe('Remote relative option is enabled - ', () => {
   describe('X path by local repo - ', () => {
 
     it('should search Y file in remote repository', () => {
-      let output = builder.machine.execute(`@include "git-local:D:/Project/Nobitlost/BuilderYrslv/spec/fixtures/include/sample-2/LibA/dirX/x_case_y_github.nut"`);
+      let output = builder.machine.execute(`@include "git-local:${process.env.SPEC_GIT_LOCAL_REPO_PATH}/spec/fixtures/include/sample-2/LibA/dirX/x_case_y_github.nut"`);
       expect(output).toContain('// y.nut (case y remote)\n');
     });
 
     it('should search Y file in remote repository + Y path', () => {
-      let output = builder.machine.execute(`@include "git-local:D:/Project/Nobitlost/BuilderYrslv/spec/fixtures/include/sample-2/LibA/dirX/x_case_y_rel_local.nut"`);
+      let output = builder.machine.execute(`@include "git-local:${process.env.SPEC_GIT_LOCAL_REPO_PATH}/spec/fixtures/include/sample-2/LibA/dirX/x_case_y_rel_local.nut"`);
       expect(output).toContain('// y.nut (case y rel)\n');
     });
   });
@@ -129,20 +129,20 @@ fdescribe('Remote relative option is not enabled - ', () => {
   });
 
   describe('X path by local repo - ', () => {
-     
-        it('should search Y file in remote repository', () => {
-          let output = builder.machine.execute(`@include "git-local:D:/Project/Nobitlost/BuilderYrslv/spec/fixtures/include/sample-2/LibA/dirX/x_case_y_https.nut"`);
-          expect(output).toContain('// y.nut (case y remote)\n');
-        });
-    
-        it('should search Y file by local abs path', () => {
-          fs.rmdirSync("/dirC", { recursive: true });
-          fs.mkdirSync("/dirC");
-          fs.writeFileSync("/dirC/y.nut", "// y.nut (case y abs)\n");
-          let output = builder.machine.execute(`@include "git-local:D:/Project/Nobitlost/BuilderYrslv/spec/fixtures/include/sample-2/LibA/dirX/x_case_y_abs_local_slash2.nut"`);
-          fs.rmdirSync("/dirC", { recursive: true });
-          expect(output).toContain('// y.nut (case y abs)\n');
-        });
+
+    it('should search Y file in remote repository', () => {
+      let output = builder.machine.execute(`@include "git-local:${process.env.SPEC_GIT_LOCAL_REPO_PATH}/spec/fixtures/include/sample-2/LibA/dirX/x_case_y_https.nut"`);
+      expect(output).toContain('// y.nut (case y remote)\n');
+    });
+
+    it('should search Y file by local abs path', () => {
+      fs.rmdirSync("/dirC", { recursive: true });
+      fs.mkdirSync("/dirC");
+      fs.writeFileSync("/dirC/y.nut", "// y.nut (case y abs)\n");
+      let output = builder.machine.execute(`@include "git-local:${process.env.SPEC_GIT_LOCAL_REPO_PATH}/spec/fixtures/include/sample-2/LibA/dirX/x_case_y_abs_local_slash2.nut"`);
+      fs.rmdirSync("/dirC", { recursive: true });
+      expect(output).toContain('// y.nut (case y abs)\n');
+    });
   });
 
   describe('X path by abs path - ', () => {
