@@ -1,1 +1,0 @@
-@include __PATH__ + "/x_case1.nut"
