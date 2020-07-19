@@ -21,7 +21,7 @@ describe('Remote relative option is enabled - ', () => {
     builder.machine.readers.github.username = process.env.SPEC_GITHUB_USERNAME;
     builder.machine.readers.github.token = process.env.SPEC_GITHUB_PASSWORD || process.env.SPEC_GITHUB_TOKEN;
     builder.machine.clearCache = true;
-    builder.logger = new Log(process.env.SPEC_LOGLEVEL || 'error');
+    builder.logger = new Log(process.env.SPEC_LOGLEVEL || 'info');
   });
 
   describe('X path by https link - ', () => {
@@ -73,11 +73,11 @@ describe('Remote relative option is enabled - ', () => {
     });
   });
 
-  fdescribe('X path by local repo - ', () => {
+  describe('X path by local repo - ', () => {
 
     it('should search Y file in remote repository', () => {
       let output = builder.machine.execute(`@include "git-local:D:/Project/Nobitlost/BuilderYrslv/spec/fixtures/include/sample-2/LibA/dirX/x_case_y_github.nut@feature/ADO-310-includes-enhancement"`);
-      expect(output).toContain('// y.nut (case y path from /)\n');
+      expect(output).toContain('// y.nut (case y remote)\n');
     });
 
     it('should search Y file in remote repository + Y path', () => {
@@ -102,13 +102,64 @@ describe('Remote relative option is not enabled', () => {
     builder.logger = new Log(process.env.SPEC_LOGLEVEL || 'error');
   });
 
-  it('should search Y file in remote repository', () => {
-    let output = builder.machine.execute(`@include "file_case1.nut"`);
-    expect(output).toContain('// y.nut (case 1)\n');
+ 
+  fdescribe('X path by https link - ', () => {
+
+    const httpsPath = "https://raw.githubusercontent.com/YaroslavYaroslavtsev/Builder/feature/ADO-310-includes-enhancement/spec/fixtures/include/sample-1";
+
+    it('should search Y file by local abs path', () => {
+      fs.rmdirSync("/dirC", { recursive: true });
+      fs.mkdirSync("/dirC");
+      fs.writeFileSync("/dirC/y.nut", "// y.nut (case y abs)\n");
+      let output = builder.machine.execute(`@include "` + httpsPath + `/dirX/x_case7.nut"`);
+      fs.rmdirSync("/dirC", { recursive: true });
+      expect(output).toContain('// y.nut (case y abs)\n');
+    }); 
   });
 
-  it('should search Y file by web link', () => {
-    let output = builder.machine.execute(`@include "file_case4.nut"`);
-    expect(output).toContain('// y.nut (case 1)\n');
+  describe('X path by remote repo - ', () => {
+
+    const githubPath = "github:YaroslavYaroslavtsev/Builder/spec/fixtures/include/sample-1";
+
+/*     it('should search Y file by web link', () => {
+      let output = builder.machine.execute(`@include "` + githubPath + `/LibA/dirX/x_case_y_https.nut@feature/ADO-310-includes-enhancement"`);
+      expect(output).toContain('// y.nut (case y remote)\n');
+    });
+
+    it('should search Y file in remote repository root + Y path', () => {
+      let output = builder.machine.execute(`@include "` + githubPath + `/LibA/dirX/x_case_y_abs_local_slash.nut@feature/ADO-310-includes-enhancement"`);
+      expect(output).toContain('// y.nut (case y path from \)\n');
+    });
+
+    it('should search Y file in remote repository + Y path', () => {
+      let output = builder.machine.execute(`@include "` + githubPath + `/LibA/dirX/x_case_y_rel_local.nut@feature/ADO-310-includes-enhancement"`);
+      expect(output).toContain('// y.nut (case y rel)\n');
+    }); */
+  });
+
+  describe('X path by local repo - ', () => {
+/* 
+    it('should search Y file in remote repository', () => {
+      let output = builder.machine.execute(`@include "git-local:D:/Project/Nobitlost/BuilderYrslv/spec/fixtures/include/sample-2/LibA/dirX/x_case_y_github.nut@feature/ADO-310-includes-enhancement"`);
+      expect(output).toContain('// y.nut (case y remote)\n');
+    });
+
+    it('should search Y file in remote repository + Y path', () => {
+      let output = builder.machine.execute(`@include "git-local:D:/Project/Nobitlost/BuilderYrslv/spec/fixtures/include/sample-2/LibA/dirX/x_case_y_rel_local.nut@feature/ADO-310-includes-enhancement"`);
+      expect(output).toContain('// y.nut (case y rel)\n');
+    }); */
+  });
+
+  describe('X path by abs path - ', () => {
+
+   /*  it('should search Y file in remote repository', () => {
+      let output = builder.machine.execute(`@include "git-local:D:/Project/Nobitlost/BuilderYrslv/spec/fixtures/include/sample-2/LibA/dirX/x_case_y_github.nut@feature/ADO-310-includes-enhancement"`);
+      expect(output).toContain('// y.nut (case y remote)\n');
+    });
+
+    it('should search Y file in remote repository + Y path', () => {
+      let output = builder.machine.execute(`@include "git-local:D:/Project/Nobitlost/BuilderYrslv/spec/fixtures/include/sample-2/LibA/dirX/x_case_y_rel_local.nut@feature/ADO-310-includes-enhancement"`);
+      expect(output).toContain('// y.nut (case y rel)\n');
+    }); */
   });
 });
