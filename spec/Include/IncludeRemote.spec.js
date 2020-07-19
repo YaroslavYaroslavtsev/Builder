@@ -9,7 +9,7 @@ const Log = require('log');
 const path = require('path');
 const fs = require('fs');
 
-describe('Remote relative option is enabled', () => {
+describe('Remote relative option is enabled - ', () => {
 
   let builder;
   const contextPath = path.resolve(__dirname + "/../fixtures/include/sample-2/").replace(/\\/g, '/');
@@ -24,7 +24,7 @@ describe('Remote relative option is enabled', () => {
     builder.logger = new Log(process.env.SPEC_LOGLEVEL || 'error');
   });
 
-  fdescribe('X path by https link', () => {
+  fdescribe('X path by https link - ', () => {
 
     const httpsPath = "https://raw.githubusercontent.com/YaroslavYaroslavtsev/Builder/feature/ADO-310-includes-enhancement/spec/fixtures/include/sample-2";
     const githubPath = "github:YaroslavYaroslavtsev/Builder/spec/fixtures/include/sample-2";
@@ -34,17 +34,17 @@ describe('Remote relative option is enabled', () => {
       expect(output).toContain('// y.nut (case y remote)\n');
     });
 
-    it('should search Y file in remote repository', () => {
+    it('should search Y file in remote repository github', () => {
       let output = builder.machine.execute(`@include "` + httpsPath + `/LibA/dirX/x_case_y_github.nut"`);
       expect(output).toContain('// y.nut (case y remote)\n');
     });
 
-    it('should search Y file in remote repository', () => {
+    it('should search Y file in remote repository 2 ', () => {
       let output = builder.machine.execute(`@include "` + httpsPath + `/LibA/dirX/x_case_y_rel_local.nut"`);
       expect(output).toContain('// y.nut (case y rel)\n');
     });
 
-    it('should search Y file in remote repository', () => {
+    it('should search Y file in remote repository 3', () => {
       let output = builder.machine.execute(`@include "` + githubPath + `/LibA/dirX/x_case_y_rel_local.nut@feature/ADO-310-includes-enhancement"`);
       expect(output).toContain('// y.nut (case y rel)\n');
     });
