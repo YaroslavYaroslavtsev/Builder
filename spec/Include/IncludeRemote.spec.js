@@ -88,7 +88,7 @@ fdescribe('Remote relative option is enabled - ', () => {
   });
 });
 
-fdescribe('Remote relative option is not enabled', () => {
+fdescribe('Remote relative option is not enabled - ', () => {
 
   let builder;
   const contextPath = path.resolve(__dirname + "/../fixtures/include/sample-2/").replace(/\\/g, '/');
@@ -161,7 +161,7 @@ fdescribe('Remote relative option is not enabled', () => {
       fs.rmdirSync("/dirC", { recursive: true });
       fs.mkdirSync("/dirC");
       fs.writeFileSync("/dirC/y.nut", "// y.nut (case y abs)\n");
-      let output = builder.machine.execute(`@include "${backslashToSlash(__dirname)}/../fixtures/include/sample-1/dirX/x_case7.nut"`);
+      let output = builder.machine.execute(`@include "${backslashToSlash(__dirname)}/../fixtures/include/sample-2/LibA/dirX/x_case_y_abs_local_slash2.nut"`);
       expect(output).toContain('// y.nut (case y abs)\n');
     });
   });
