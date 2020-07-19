@@ -1,1 +1,1 @@
-// y.nut (case y path from \)
+// y.nut (case y path from /)
